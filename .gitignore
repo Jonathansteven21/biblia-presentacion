@@ -1,36 +1,33 @@
-# =========================
-# IntelliJ IDEA
-# =========================
-.idea/
-*.iml
-/shelf/
-/.idea/workspace.xml
-/queries/
-/dataSources/
-/dataSources.local.xml
-/httpRequests/
-
-# =========================
-# Maven / Java
-# =========================
+HELP.md
 target/
-*.class
-*.jar
-*.war
-*.ear
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
-# =========================
-# Logs
-# =========================
-*.log
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-# =========================
-# OS
-# =========================
-.DS_Store
-Thumbs.db
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
 
-# =========================
-# Environment
-# =========================
-.env
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
