@@ -7,6 +7,7 @@ public class Book {
 
     private final Map<String, Chapter> chapters = new HashMap<>();
 
+    @SuppressWarnings("unchecked")
     public Book(Map<String, Object> rawChapters) {
         rawChapters.forEach((chapterNumber, chapterValue) -> {
             if (chapterValue instanceof Map<?, ?> verses) {
@@ -22,3 +23,4 @@ public class Book {
         return chapters.get(number);
     }
 }
+
