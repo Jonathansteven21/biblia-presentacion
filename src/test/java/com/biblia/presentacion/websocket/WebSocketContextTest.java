@@ -8,6 +8,5 @@ class WebSocketContextTest {
 
     @Test
     void contextLoadsWithWebSocket() {
-        // Si el contexto levanta, WebSocket está bien configurado
     }
 }
