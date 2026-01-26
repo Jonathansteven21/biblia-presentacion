@@ -8,7 +8,10 @@ function connect() {
         console.log('WebSocket conectado (presentación)');
 
         stompClient.subscribe('/topic/verse', (message) => {
-            document.getElementById('contenido').innerText = message.body;
+            const texto = message.body?.trim();
+
+            document.getElementById('contenido').innerText =
+                texto && texto.length > 0 ? texto : '—';
         });
     });
 }
