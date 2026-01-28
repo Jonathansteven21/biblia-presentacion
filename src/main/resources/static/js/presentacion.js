@@ -24,9 +24,14 @@ function connect() {
         console.log('WebSocket conectado (presentación)');
 
         stompClient.subscribe('/topic/verse', (message) => {
-            const texto = message.body?.trim();
-            document.getElementById('content').innerText =
-                texto && texto.length > 0 ? texto : '—';
+            const data = JSON.parse(message.body);
+
+            const content = document.getElementById('content');
+
+            content.innerHTML = `
+                <div class="reference">${data.reference}</div>
+                <div class="text">${data.text}</div>
+            `;
         });
     });
 }
