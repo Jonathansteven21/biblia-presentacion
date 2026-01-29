@@ -1,18 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Control</title>
-</head>
-<body>
+  </head>
+  <body>
+    <h1>Vista de Control</h1>
 
-<h1>Vista de Control</h1>
+    <label for="book">Libro</label>
+    <select id="book">
+      <option value="">Cargando libros…</option>
+    </select>
 
-<button id="btnEnviar">Enviar mensaje</button>
+    <br /><br />
 
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
-<script src="/js/control.js"></script>
+    <label for="chapter">Capítulo</label>
+    <select id="chapter">
+        <option value="">Seleccione capítulo</option>
+    </select>
 
-</body>
+
+    <br /><br />
+
+    <label for="from">Desde</label>
+    <input type="number" id="from" value="16" min="1" />
+
+    <label for="to">Hasta</label>
+    <input type="number" id="to" value="16" min="1" />
+
+    <br /><br />
+
+    <button id="btnEnviar">Mostrar</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+    <script src="/js/control.js"></script>
+  </body>
 </html>
