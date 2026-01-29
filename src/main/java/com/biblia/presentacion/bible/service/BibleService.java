@@ -72,4 +72,23 @@ public class BibleService {
 
         return result;
     }
+
+    public List<String> getChapters(String book) {
+        if (book == null || book.isBlank()) {
+            return List.of();
+        }
+
+        Book bookObj = bible.getBooks().get(book);
+        if (bookObj == null) {
+            return List.of();
+        }
+
+        return bookObj.getChapters().keySet().stream()
+                .sorted((a, b) -> Integer.compare(
+                        Integer.parseInt(a),
+                        Integer.parseInt(b)
+                ))
+                .toList();
+    }
+
 }

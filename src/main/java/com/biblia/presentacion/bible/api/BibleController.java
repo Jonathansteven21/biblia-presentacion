@@ -25,4 +25,22 @@ public class BibleController {
     ) {
         return bibleService.getVerseText(book, chapter, from, to);
     }
+
+    @GetMapping("/api/bible/books")
+    public List<String> getBooks() {
+        return bibleService.getBible()
+                .getBooks()
+                .keySet()
+                .stream()
+                .sorted()
+                .toList();
+    }
+
+    @GetMapping("/api/bible/chapters")
+    public List<String> getChapters(
+            @RequestParam String book
+    ) {
+        return bibleService.getChapters(book);
+    }
+
 }

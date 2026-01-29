@@ -22,5 +22,10 @@ public class Book {
     public Chapter getChapter(String number) {
         return chapters.get(number);
     }
+
+    public Map<String, Chapter> getChapters() {
+        return chapters;
+    }
+
 }
 
