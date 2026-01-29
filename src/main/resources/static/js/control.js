@@ -29,7 +29,12 @@ function cargarLibros() {
 }
 
 function enviarVersiculo() {
-    if (!stompClient) return;
+    console.log('CLICK EN BOTÓN');
+
+    if (!stompClient) {
+        console.log('stompClient es null');
+        return;
+    }
 
     const book = document.getElementById('book').value;
     const chapter = document.getElementById('chapter').value;
@@ -41,6 +46,11 @@ function enviarVersiculo() {
         return;
     }
 
+    if (!chapter) {
+        alert('Seleccione un capítulo');
+        return;
+    }
+
     const payload = {
         book,
         chapter,
@@ -48,11 +58,7 @@ function enviarVersiculo() {
         to
     };
 
-    if (!chapter) {
-        alert('Seleccione un capítulo');
-        return;
-    }
-
+    console.log('ENVIANDO PAYLOAD:', payload);
 
     stompClient.send(
         '/app/verse',
@@ -60,15 +66,6 @@ function enviarVersiculo() {
         JSON.stringify(payload)
     );
 }
-
-document
-    .getElementById('book')
-    .addEventListener('change', (e) => {
-        const book = e.target.value;
-        if (book) {
-            cargarCapitulos(book);
-        }
-    });
 
 function cargarCapitulos(book) {
     const chapterSelect = document.getElementById('chapter');
@@ -91,9 +88,21 @@ function cargarCapitulos(book) {
         });
 }
 
+/* 🔑 TODO debe registrarse cuando el DOM ya existe */
 document.addEventListener('DOMContentLoaded', () => {
     connectWebSocket();
     cargarLibros();
+
+    document
+        .getElementById('book')
+        .addEventListener('change', (e) => {
+            const book = e.target.value;
+            if (book) {
+                cargarCapitulos(book);
+            }
+        });
+
+    document
+        .getElementById('btnEnviar')
+        .addEventListener('click', enviarVersiculo); // ← ESTO FALTABA
 });
-
-

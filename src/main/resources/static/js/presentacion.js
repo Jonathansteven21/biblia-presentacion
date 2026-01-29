@@ -26,12 +26,13 @@ function connect() {
         stompClient.subscribe('/topic/verse', (message) => {
             const data = JSON.parse(message.body);
 
-            const content = document.getElementById('content');
+            const referenceEl = document.getElementById('reference');
+            const verseTextEl = document.getElementById('verse-text');
 
-            content.innerHTML = `
-                <div class="reference">${data.reference}</div>
-                <div class="text">${data.text}</div>
-            `;
+            console.log('PARSED:', data);
+
+            referenceEl.textContent = data.reference ?? '';
+            verseTextEl.textContent = data.text ?? '—';
         });
     });
 }
